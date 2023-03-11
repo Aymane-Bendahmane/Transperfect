@@ -1,0 +1,109 @@
+You are given a Spring Boot application that provides a RESTful endpoint for creating and updating user profiles. 
+
+The user profile data includes basic information such as name, email, and password, as well as more complex data such as educational background and work experience.
+
+Your task is to implement a custom validation mechanism for the user profile data. The validation rules are as follows:
+
+The name field is required and must be between 2 and 50 characters long.The email field is required and must be a
+ valid email address.
+
+The password field is required and must be between 8 and 20 characters long, and must contain
+ at least one uppercase letter, one lowercase letter, one digit, and one special character.
+
+The education field is optional, but if present, it must be a list of valid educational qualifications 
+(e.g., "Bachelor's Degree in Computer Science").
+
+The workExperience field is optional, but if present, it must be a list of valid work experience entries 
+(e.g., "Software Engineer at XYZ Inc., 2015-2020").
+
+If any of the validation rules fail, the RESTful endpoint should return an appropriate error message.
+You can assume that the user profile data is submitted as a JSON object in the request body.
+
+
+
+thierry.lagueux@transperfect.com
+1-Send code challenge solution (repo with link)
+2-Send answer to question "why should we choose you?"
+
+
+------------------------------------------
+What is the Sidecar pattern?
+What is the Bulkhead pattern?
+How can the Liskov Substitution Principle (LSP) help ensure code correctness?
+What are the four pillars of OOP?
+What does the "S" in SOLID stand for?
+
+
+---------------------------------
+{
+    "name": "aymane bendahmane",
+    "email": "meowmeow@gmail.com",
+    "password": "12345678Aa=",
+    "educations": [
+        {
+            "title": "developement web et genie logiciel"
+        },
+        {
+            "title": "Miage ASCI"
+        }
+    ],
+    "workExperiences": [
+        {
+            "jobTitle": "ingenieur d'etude et developement informatique at ADRIA B&T",
+            "startDate": "2022-01-03",
+            "present": true
+        },
+        {
+            "jobTitle": "Stage pre-embouche at ADRIA B&T",
+            "startDate": "2021-10-10",
+            "endDate": "2021-12-31"
+        }
+    ]
+}
+
+--------------------------------
+
+curl --location 'http://localhost:5050/users' \
+--header 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0' \
+--header 'Accept: */*' \
+--header 'Accept-Language: en-US,en;q=0.5' \
+--header 'Accept-Encoding: gzip, deflate, br' \
+--header 'codeBanque: 00003' \
+--header 'Authorization: Bearer a48f846a-106d-32c7-b669-1283129a5243' \
+--header 'X-JWT-Assertion: Bearer eyJ4NXQiOiJOVEF4Wm1NeE5ETXlaRGczTVRVMVpHTTBNekV6T0RKaFpXSTRORE5sWkRVMU9HRmtOakZpTVEiLCJraWQiOiJOVEF4Wm1NeE5ETXlaRGczTVRVMVpHTTBNekV6T0RKaFpXSTRORE5sWkRVMU9HRmtOakZpTVEiLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiamVUckJrQ0c1enF4dDlmcllvRUtWZyIsImF1ZCI6IlZ2SWljZjZWaF9PX1lURUR1MG0xU3gybEtwa2EiLCJjX2hhc2giOiJyQk13THRKVzdFMVhCSmIwcVVVd0R3Iiwic3ViIjoiYWRzZ2FicyIsIm5iZiI6MTY3ODA5NDQ1NSwiYXpwIjoiVnZJaWNmNlZoX09fWVRFRHUwbTFTeDJsS3BrYSIsImFtciI6WyJCYXNpY0F1dGhlbnRpY2F0b3IiXSwiaXNzIjoiaHR0cHM6XC9cL2xvY2FsaG9zdDo5NDQzXC9vYXV0aDJcL3Rva2VuIiwiZXhwIjoxNjc4NDU0NDU1LCJpYXQiOjE2NzgwOTQ0NTUsInNpZCI6IjY2Yjg3NDA1LWRhZmUtNGY0Yi04YWFmLWYyNzU3MTVhY2U0MyJ9.adXp1fM8wzM1LqTzWAkObVteKVj_63EtP4BZo7nvclxB48ULTPSV0RiOVrDh2kSAm4ttuhIKErn6nia9RS3EjGe_VIt1Doar7gU-Q-AsqLfh-Xn4LW3HJnvO1cctKZScx7ssKcJNzexe544-Km8my7z8FWa9pdPq2ve_7I4syc_Nssf6wRA3GvbG3_1okjj8cWTh3m1NerZY0N6CrHkOqULGJiTtt8aXGP2hJxbcraIRJwaugYEssYt9gDAMJe1M1SoGIBJrJbPVS0D0LCmA9qzhMm4zwsmDvQriVl2YftdYAk-qwhCaUspFBrXdZsKt8wHlbsalseE6s_bmqE1_qQ' \
+--header 'Content-Type: application/json;charset=UTF-8' \
+--header 'platform: WEB' \
+--header 'Origin: http://localhost:3002' \
+--header 'DNT: 1' \
+--header 'Connection: keep-alive' \
+--header 'Referer: http://localhost:3002/' \
+--header 'Sec-Fetch-Dest: empty' \
+--header 'Sec-Fetch-Mode: cors' \
+--header 'Sec-Fetch-Site: same-site' \
+--header 'Pragma: no-cache' \
+--header 'Cache-Control: no-cache' \
+--data-raw '{
+    "name": "aymane bendahmane",
+    "email": "meowmeow@gmail.com",
+    "password": "12345678Aa=",
+    "educations": [
+        {
+            "title": "developement web et genie logiciel"
+        },
+        {
+            "title": "Miage ASCI"
+        }
+    ],
+    "workExperiences": [
+        {
+            "jobTitle": "ingenieur d'\''etude et developement informatique at ADRIA B&T",
+            "startDate": "2022-01-03",
+            "present": true
+        },
+        {
+            "jobTitle": "Stage pre-embouche at ADRIA B&T",
+            "startDate": "2021-10-10",
+            "endDate": "2021-12-31"
+        }
+    ]
+}'
